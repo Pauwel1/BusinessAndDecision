@@ -18,9 +18,9 @@ cv2.imwrite('binary.png', binary)
 # are greater than zero, then use these coordinates to
 # compute a rotated bounding box that contains all
 # coordinates
-coords = np.column_stack(np.where(thresh > 0))
+coords = np.column_stack(np.where(binary > 0))
 print(coords.shape)
-angle = cv2.minAreaRect(coords)[1]
+angle = cv2.minAreaRect(coords)[-1]
 # the `cv2.minAreaRect` function returns values in the
 # range [-90, 0); as the rectangle rotates clockwise the
 # returned angle trends to 0 -- in this special case we
